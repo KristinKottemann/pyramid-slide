@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>Pyramid Slide</title>
+    </head>
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles_pyramid-slide.css">
+    </head>
+    <h1>Pyramid Slide</h1>
+
+<body>
+<div>
+
+    Brick Symbol:
+    <select onchange="draw_pyramid()" id="symbol">
+        <option value="X">X</option>
+        <option value="#">#</option>
+        <option value="@">@</option>
+        <option value="$">$</option>
+    </select>
+
+    <form>
+        How High?
+        <input type="range" min=1 max=20 oninput="get_height(this.value)" id="height">
+        <span id="height_value"></span>
+
+        <p id="pyramid"></p>
+    </form>
+
+    <script>
+    function get_height(val) {
+        document.getElementById("height_value").innerHTML = val;
+        draw_pyramid();
+    }
+
+    function draw_pyramid() {
+        height = document.getElementById("height").value;
+        symbol = document.getElementById("symbol").value;
+        pyramid_text = '';
+        for (i = 0; i < height; i++) {
+            pyramid_text += '&nbsp'.repeat(height-i) + symbol.repeat(i+2) + '<br>';
+        }
+        document.getElementById("pyramid").innerHTML = pyramid_text;
+    }
+    </script>
+
+</div>
+</body>
+</html>
